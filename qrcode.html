@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guardian QR Code Generator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;300;400;500;600;700&display=swap"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Open Sans", sans-serif;
+      }
+
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        width: 100%;
+        padding: 0 10px;
+        background: url("login-hero-bg.jpg"), #000;
+        background-position: center;
+        background-size: cover;
+      }
+
+      .wrapper {
+        width: 400px;
+        border-radius: 8px;
+        padding: 30px;
+        text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(9px);
+        -webkit-backdrop-filter: blur(9px);
+      }
+
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        color: #fff;
+      }
+
+      .input-field {
+        position: relative;
+        border-bottom: 2px solid #ccc;
+        margin: 15px 0;
+      }
+
+      .input-field label {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        color: #fff;
+        font-size: 16px;
+        pointer-events: none;
+        transition: 0.15s ease;
+      }
+
+      .input-field input {
+        width: 100%;
+        height: 40px;
+        background: transparent;
+        border: none;
+        outline: none;
+        font-size: 16px;
+        color: #fff;
+        text-align: center;
+      }
+
+      .input-field input:focus ~ label,
+      .input-field input:valid ~ label {
+        font-size: 0.8rem;
+        top: 10px;
+        transform: translateY(-120%);
+      }
+
+      button {
+        background: #fff;
+        color: #000;
+        font-weight: 600;
+        border: none;
+        padding: 12px 20px;
+        cursor: pointer;
+        border-radius: 3px;
+        font-size: 16px;
+        border: 2px solid transparent;
+        transition: 0.3s ease;
+        width: 100%;
+        margin-top: 20px;
+      }
+
+      button:hover {
+        color: #fff;
+        border-color: #fff;
+        background: rgba(255, 255, 255, 0.15);
+      }
+
+      #sticker {
+        display: none;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+        margin-top: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(5px);
+      }
+
+      #qrcode {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        width: fit-content;
+      }
+
+      #downloadBtn {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <h2>Guardian QR Code Generator</h2>
+      <div class="input-field">
+        <input type="text" id="phoneNumber" required />
+        <label for="phoneNumber">Enter Phone Number</label>
+      </div>
+      <button onclick="generateQRCode()">Generate QR Code</button>
+
+      <div id="sticker">
+        <p style="font-weight: bold; color: #fff">Guardian Emergency QR</p>
+        <div id="qrcode"></div>
+      </div>
+
+      <button id="downloadBtn" onclick="downloadQRCode()">
+        Download QR Code
+      </button>
+    </div>
+
+    <script>
+      anime({
+        targets: ".wrapper",
+        opacity: [0, 1],
+        translateY: [50, 0],
+        duration: 1000,
+        easing: "easeOutExpo",
+        delay: 300,
+      });
+
+      function generateQRCode() {
+        const phoneNumber = document.getElementById("phoneNumber").value.trim();
+        const qrContainer = document.getElementById("qrcode");
+        const sticker = document.getElementById("sticker");
+        const downloadBtn = document.getElementById("downloadBtn");
+
+        if (phoneNumber) {
+          qrContainer.innerHTML = "";
+          new QRCode(qrContainer, `tel:${phoneNumber}`);
+          sticker.style.display = "block";
+          downloadBtn.style.display = "block";
+        } else {
+          alert("Please enter a valid phone number");
+        }
+      }
+
+      function downloadQRCode() {
+        const sticker = document.getElementById("sticker");
+
+        setTimeout(() => {
+          html2canvas(sticker, { scale: 2 }).then((canvas) => {
+            const link = document.createElement("a");
+            link.href = canvas.toDataURL("image/png");
+            link.download = "guardian-qrcode.png";
+            link.click();
+          });
+        }, 300); // Wait for QR to fully render
+      }
+    </script>
+  </body>
+</html>

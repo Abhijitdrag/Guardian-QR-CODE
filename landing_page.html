@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guardian QR Code Scan - Presentation</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background: linear-gradient(135deg, #4facfe, #00f2fe);
+        color: white;
+        text-align: center;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1000px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .college-logo {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 10px;
+        /* animation: rotateIn 1s ease-in-out; */
+      }
+
+      .college-name {
+        font-size: 20px;
+        font-weight: 600;
+      }
+
+      .department {
+        font-size: 18px;
+        font-weight: 400;
+        opacity: 0.9;
+      }
+
+      .title {
+        margin: 20px 0;
+        font-size: 30px;
+        font-weight: 700;
+        letter-spacing: 1px;
+      }
+
+      .academic-year {
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 15px;
+      }
+
+      .footer {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 20px;
+      }
+
+      .team-member {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 10px;
+        border-radius: 10px;
+        width: 180px;
+        text-align: center;
+        font-size: 14px;
+        transition: 0.3s;
+      }
+
+      .team-member:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: translateY(-5px);
+      }
+
+      /* Next Page Arrow Button */
+      .next-btn {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        font-size: 30px;
+        border: none;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        animation: pulse 2s infinite;
+      }
+
+      .next-btn:hover {
+        background: rgba(255, 255, 255, 0.4);
+        transform: translateY(-50%) scale(1.1);
+      }
+
+      @keyframes rotateIn {
+        from {
+          transform: rotate(-360deg);
+          opacity: 0;
+        }
+        to {
+          transform: rotate(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: translateY(-50%) scale(1);
+        }
+        50% {
+          transform: translateY(-50%) scale(1.1);
+        }
+      }
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        width: 100%;
+        padding: 0 10px;
+        background: url("login-hero-bg.jpg"), #000;
+        background-position: center;
+        background-size: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header Section -->
+      <div class="header">
+        <img src="collegelogo1.png" alt="College Logo" class="college-logo" />
+        <div class="college-name">
+          Genba Sopanrao Moze Trust's
+          <br />
+          <strong>Parvatibai Genba Moze College of Engineering</strong>
+        </div>
+        <div class="department">Department of Computer Engineering</div>
+      </div>
+
+      <!-- Title Section -->
+      <div class="main-content">
+        <div class="academic-year">A.Y. 2024 - 2025</div>
+        <h1 class="title">Guardian QR Code Scan</h1>
+        <h2>Project Presentation</h2>
+        <p><strong>Guided By:</strong> Dr. Vishal G. Puranik</p>
+      </div>
+
+      <!-- Footer Section -->
+      <div class="footer">
+        <div class="team-member">
+          <strong>Chavhan Abhijit Rajendra</strong> <br />
+          (72446967C)
+        </div>
+        <div class="team-member">
+          <strong>Parihar Maroof Asif</strong> <br />
+          (72446985M)
+        </div>
+        <div class="team-member">
+          <strong>Bharbade Somesh Mahadev</strong> <br />
+          (72446964J)
+        </div>
+        <div class="team-member">
+          <strong>Zore Tanish Suresh</strong> <br />
+          (72446995J)
+        </div>
+      </div>
+    </div>
+
+    <!-- Next Page Button -->
+    <a href="main.html">
+      <button class="next-btn">→</button>
+    </a>
+  </body>
+</html>
